@@ -19,7 +19,7 @@ public class Welcome
         public long TotalResults { get; set; }
 
         [JsonPropertyName("next_page")]
-        public Uri NextPage { get; set; }
+        public string NextPage { get; set; }
 }
 public class Photo
 {
@@ -33,13 +33,13 @@ public class Photo
     public long Height { get; set; }
 
     [JsonPropertyName("url")]
-    public Uri Url { get; set; }
+    public string Url { get; set; }
 
     [JsonPropertyName("photographer")]
     public string Photographer { get; set; }
 
     [JsonPropertyName("photographer_url")]
-    public Uri PhotographerUrl { get; set; }
+    public string PhotographerUrl { get; set; }
 
     [JsonPropertyName("photographer_id")]
     public long PhotographerId { get; set; }
@@ -60,26 +60,26 @@ public class Photo
 public class Src
 {
     [JsonPropertyName("original")]
-    public Uri Original { get; set; }
+    public string Original { get; set; }
 
     [JsonPropertyName("large2x")]
-    public Uri Large2X { get; set; }
+    public string Large2X { get; set; }
 
     [JsonPropertyName("large")]
-    public Uri Large { get; set; }
+    public string Large { get; set; }
 
     [JsonPropertyName("medium")]
-    public Uri Medium { get; set; }
+    public string Medium { get; set; }
 
     [JsonPropertyName("small")]
-    public Uri Small { get; set; }
+    public string Small { get; set; }
 
     [JsonPropertyName("portrait")]
-    public Uri Portrait { get; set; }
+    public string Portrait { get; set; }
 
     [JsonPropertyName("landscape")]
-    public Uri Landscape { get; set; }
+    public string Landscape { get; set; }
 
     [JsonPropertyName("tiny")]
-    public Uri Tiny { get; set; }
+    public string Tiny { get; set; }
 }

@@ -10,9 +10,9 @@ namespace ToptikVedio.Services.Handlers;
 public partial class BotUpdateHandler : IUpdateHandler
 {
     private readonly ILogger<BotUpdateHandler> _logger;
-    IOptions<PhotoOptions> _options;
+    IOptions<Option> _options;
     public BotUpdateHandler(ILogger<BotUpdateHandler> logger, 
-        IOptions<PhotoOptions> options)
+        IOptions<Option> options)
     {
         _logger = logger;
         _options = options;

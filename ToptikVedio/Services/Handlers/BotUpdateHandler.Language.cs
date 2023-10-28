@@ -16,8 +16,8 @@ public partial class BotUpdateHandler
             {
                 new []
                 {
-                    InlineKeyboardButton.WithCallbackData("Uz🇺🇿", callbackData:"uz"),
-                    InlineKeyboardButton.WithCallbackData("Ru🇷🇺", callbackData:"ru"),
+                    InlineKeyboardButton.WithCallbackData("Uz", callbackData:"uz"),
+                    InlineKeyboardButton.WithCallbackData("Ru", callbackData:"ru"),
                     InlineKeyboardButton.WithCallbackData("Eng", callbackData:"eng")
                 },
             });
@@ -29,5 +29,6 @@ public partial class BotUpdateHandler
                 replyMarkup: inlineKeyboard,
                 cancellationToken: cancellation
             );
+        checkTrue = false;
     }
 }

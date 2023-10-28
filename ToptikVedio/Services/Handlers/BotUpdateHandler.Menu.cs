@@ -1,6 +1,7 @@
 ﻿using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot.Types;
 using Telegram.Bot;
+using System.Threading;
 
 namespace ToptikVedio.Services.Handlers;
 
@@ -17,13 +18,12 @@ public partial class BotUpdateHandler
             {
             new []
             {
-                new KeyboardButton("Tilni o'zgartirsh"),
+                new KeyboardButton("Video🎥"),
                 new KeyboardButton("Sozlamalar⚙️")
             },
             new []
             {
-                new KeyboardButton("Musiqa"),
-                new KeyboardButton("Photo")
+                new KeyboardButton("Photo📸")
             }
             })
         {
@@ -49,13 +49,12 @@ public partial class BotUpdateHandler
             {
             new []
             {
-                new KeyboardButton("Изменить язык"),
+                new KeyboardButton("Видео🎥"),
                 new KeyboardButton("Hастройки⚙️")
             },
             new []
             {
-                new KeyboardButton("Музыка"),
-                new KeyboardButton("Photo")
+                new KeyboardButton("Фото📸")
             }
             })
         {
@@ -81,13 +80,12 @@ public partial class BotUpdateHandler
             {
             new []
             {
-                new KeyboardButton("Change language"),
+                new KeyboardButton("Video🎥"),
                 new KeyboardButton("Settings⚙️")
             },
             new []
             {
-                new KeyboardButton("Music"),
-                new KeyboardButton("Photo")
+                new KeyboardButton("Photo📸")
             }
             })
         {
@@ -101,5 +99,56 @@ public partial class BotUpdateHandler
             cancellationToken: cancellation
         );
 
+    }
+
+    private IReplyMarkup? BotTaskButtonMenuUz()
+    {
+        var replyKeyboard = new ReplyKeyboardMarkup(
+        new[]
+        {
+            new[]
+            {
+                new KeyboardButton("Tilni o'zgartirsh")
+            }
+        })
+        {
+            ResizeKeyboard = true
+        };
+
+        return replyKeyboard;
+    }
+
+    private IReplyMarkup? BotTaskButtonMenuRu()
+    {
+        var replyKeyboard = new ReplyKeyboardMarkup(
+        new[]
+        {
+            new[]
+            {
+                new KeyboardButton("Изменить язык")
+            }
+        })
+        {
+            ResizeKeyboard = true
+        };
+
+        return replyKeyboard;
+    }
+
+    private IReplyMarkup? BotTaskButtonMenuEng()
+    {
+        var replyKeyboard = new ReplyKeyboardMarkup(
+        new[]
+        {
+            new[]
+            {
+                new KeyboardButton("Change language")
+            }
+        })
+        {
+            ResizeKeyboard = true
+        };
+
+        return replyKeyboard;
     }
 }

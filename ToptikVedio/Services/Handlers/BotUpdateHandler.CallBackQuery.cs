@@ -28,6 +28,15 @@ public partial class BotUpdateHandler
                     await MenuBotEng(bot, message, cancellation);
                     resMessage = "You chose English language";
                     break;
+                case "Sozlamalar⚙️":
+                    await SettingUz(bot, message, cancellation);
+                    break;
+                case "Hастройки⚙️":
+                    await SettingRu(bot, message, cancellation);
+                    break;
+                case "Settings⚙️":
+                    await SettingEng(bot, message, cancellation);
+                    break;
             }
 
             await bot.AnswerCallbackQueryAsync(

@@ -1,11 +1,8 @@
 ﻿using System.Text.Json;
-using System.Threading;
 using Telegram.Bot;
-using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types;
 using ToptikVedio.Services.Client;
-using System.Security.Cryptography.X509Certificates;
-using ToptikVedio.Options;
+
 
 namespace ToptikVedio.Services.Handlers;
 
@@ -15,9 +12,37 @@ public partial class BotUpdateHandler
         ITelegramBotClient botClient,
         Message update,
         CancellationToken cancellationToken)
+    {     
+        switch(update.Text)
+        {
+               case "Rasm📸":
+                 await botClient.SendTextMessageAsync(update.Chat.Id,
+                 "Rasm nomini kiriting:",
+                 cancellationToken: cancellationToken);
+               break;
+               case "Фото📸":
+                 await botClient.SendTextMessageAsync(update.Chat.Id,
+                 "Введите имя изображения:",
+                 cancellationToken: cancellationToken);
+               break;
+               case "Photo📸":
+                 await botClient.SendTextMessageAsync(update.Chat.Id,
+                 "Enter a name for the image:",
+                 cancellationToken: cancellationToken);
+                break; 
+        }  
+        isPhotos = true;
+        isVedios = false;
+        checkTrue = false;
+    }
+
+    public async Task ResponIfNull(
+        ITelegramBotClient botClient,
+        Message update,
+        CancellationToken cancellationToken)
     {
         await botClient.SendTextMessageAsync(update.Chat.Id,
-            "Photo nomini kiriting:",
+            "Bunday Photo Topilmadi!",
             cancellationToken: cancellationToken);
     }
 
@@ -40,20 +65,16 @@ public partial class BotUpdateHandler
         var result = JsonSerializer.Deserialize<Welcome>(jsonString)
             ?? throw new ArgumentException();
 
-        //Directory.CreateDirectory(@"./Files");
-        //var photoInfo = result.;
-
-        await botClient.SendPhotoAsync(
-            chatId: update.Chat.Id,
-            photo: InputFile.FromUri(result.Photos[0].Src.Original));
-
+        if(result.TotalResults == 0) 
+        {
+            await ResponIfNull(botClient, update, cancellationToken);
+        }
 
         foreach (var item in result.Photos)
         {
             await botClient.SendPhotoAsync(
             chatId: update.Chat.Id,
-            photo: InputFile.FromUri(item.Src.Original));
+            photo: InputFile.FromUri(new Uri(item.Src.Large2X)));
         }
-
     }
 }
